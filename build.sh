@@ -12,12 +12,10 @@ RELEASE="$(rpm -E %fedora)"
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
-# this installs a package from fedora repos
-rpm-ostree install screen
+rpm-ostree install -y virt-manager edk2-ovmf qemu htop zsh sunshine systemd-boot-unsigned sdubby
+rpm-ostree kargs \
+--append-if-missing="kvm.ignore_msrs=1" \
+--append-if-missing="kvm.report_ignored_msrs=0"
 
-# this would install a package from rpmfusion
-# rpm-ostree install vlc
-
-#### Example for enabling a System Unit File
-
-systemctl enable podman.socket
+systemctl enable libvirtd
+systemctl enable sunshine-workaround
