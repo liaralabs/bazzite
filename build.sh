@@ -21,4 +21,4 @@ systemctl enable libvirtd
 systemctl enable sunshine-workaround
 
 # Fix rebase-checker in ublue-system-update.py
-sed 's/ublue-os\/bazzite/liaralabs\/bazzite/' /usr/share/ublue-os/image-info.json
+sed -i 's/ublue-os\/bazzite/liaralabs\/bazzite/' /usr/share/ublue-os/image-info.json
